@@ -1,0 +1,26 @@
+.top-navbar {
+  background-color: #333;
+  color: white;
+  display: flex;
+  width: 100vw;
+  height: 100px;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+}
+
+.top-navbar-menu {
+  list-style: none;
+  display: flex;
+  gap: 1vw;
+  margin-right: 2vw;
+}
+
+.top-navbar-menu li {
+  cursor: pointer;
+}
+
+nav h1 {
+    margin-left: 30px;
+}

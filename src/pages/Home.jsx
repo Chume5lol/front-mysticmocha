@@ -1,4 +1,6 @@
 import { useAuth } from "../context/Context";
+import React from 'react';
+import TopNavbar from '../components/TopNavbar';
 
 const Home = () => {
     const { user } = useAuth(); // pega o usuário logado do contexto
@@ -6,9 +8,13 @@ const Home = () => {
     if (!user) return <p>Carregando...</p>; // enquanto não tem usuário
 
     return (
-        <div>
-            <h1>Bem-vindo, {user.nome}!</h1>
 
+        
+            <>
+                <TopNavbar />
+                <main style={{ marginLeft: '60px', padding: '20px' }}>
+                     <h1>Bem-vindo, {user.nome}!</h1>
+           
             {/* Apenas Administrador */}
             {user.role === "ADMINISTRADOR" && (
                 <div>
@@ -40,7 +46,9 @@ const Home = () => {
                     <p>Aqui você vê e cria seus próprios chamados.</p>
                 </div>
             )}
-        </div>
+                </main>
+            </>
+           
     );
 };
 
