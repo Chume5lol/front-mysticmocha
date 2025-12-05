@@ -1,0 +1,16 @@
+.formulario {
+    border: 1px solid white;
+    border-radius: 20px;
+    width: 30vw;
+    height: auto;
+    text-align: center;
+    padding: 20px;
+}
+
+.formulario input, select {
+    width: 100%;
+
+    height: 3vh;
+    
+}
+

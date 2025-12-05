@@ -1,0 +1,53 @@
+.sidebar {
+  position: fixed;
+  top: 100px; 
+  left: 0;
+  width: 60px;
+  height: 100vh;
+  background-color: #242424;
+  color: #242424;
+  transition: width 0.3s ease;
+  overflow: hidden;
+  
+}
+
+
+.sidebar.open {
+  width: 20vw;
+  transition: 0.5s ease;
+  color: white;
+}
+
+
+.sidebar.open li:hover {
+  background: #444;
+}
+
+
+
+
+.toggle-btn {
+  background: #242424;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid #242424;
+}
+
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.sidebar-menu li {
+  padding: 12px 20px;
+  cursor: pointer;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+
+.sidebar-menu li:hover {
+  background: #242424;
+}

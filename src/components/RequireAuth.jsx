@@ -4,6 +4,7 @@ export default function RequireAuth({ children }) {
     const token = localStorage.getItem("token");
 
     if (!token) {
+        alert('Usuário deslogado')
         return <Navigate to="/login" replace />;
     }
 

@@ -1,14 +1,30 @@
 import React from 'react';
 import './TopNavbar.css';
+import { useAuth } from '../context/Context';
+import { useNavigate } from 'react-router-dom';
 
 export default function TopNavbar() {
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
+
+
+  function handleLogout() {
+    logout();
+    navigate("/login");
+  }
+
+
   return (
     <nav className="top-navbar">
       <h1>MysticMocha</h1>
       <ul className="top-navbar-menu">
-        <li>Home</li>
-        <li>Sobre</li>
-        <li>Contato</li>
+        <li>Alterar configuração</li>
+
+        {(user.role === "CLIENTE" ||
+          user.role === "GESTOR" ||
+          user.role === "ADMINISTRADOR") && (
+          <li onClick={handleLogout}>Logout</li>
+        )}
       </ul>
     </nav>
   );

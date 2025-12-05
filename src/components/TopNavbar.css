@@ -3,7 +3,7 @@
   color: white;
   display: flex;
   width: 100vw;
-  height: 100px;
+  height: 10vh;
   align-items: center;
   justify-content: space-between;
   position: fixed;
@@ -23,4 +23,5 @@
 
 nav h1 {
     margin-left: 30px;
+    font-size: 1.6em;
 }
