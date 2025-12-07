@@ -1,0 +1,106 @@
+.tabela-container {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.tabela-pesquisa {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+
+.tabela-wrapper {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.tabela {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  word-wrap: break-word;
+}
+
+.tabela th:nth-child(1) {
+  width: 4%;
+}
+
+.tabela th:nth-child(2) {
+  width: 10%;
+}
+
+.tabela th:nth-child(3) {
+  width: 15%;
+}
+
+.tabela th:nth-child(4) {
+  width: 40%;
+}
+
+.tabela th:nth-child(5) {
+  width: 20%;
+}
+
+.tabela th:nth-child(6) {
+  width: 20%;
+}
+
+.tabela th:nth-child(7) {
+  width: 20%;
+}
+
+.tabela th:nth-child(8) {
+  width: 10%;
+}
+
+
+
+.tabela th {
+  background: #492727;
+  font-weight: bold;
+  padding: 10px;
+  border: 2px solid #ddd;
+  text-align: left;
+}
+
+
+.tabela th:nth-child(1) {
+    text-align: center;
+}
+
+.tabela td:nth-child(1) {
+    text-align: center;
+}
+
+.tabela td {
+  padding: 8px;
+  border: 1px solid #eee;
+  max-height: 50px;      
+  white-space: nowrap;    
+  overflow: hidden;       
+  text-overflow: ellipsis;
+}
+
+.tabela-sem-resultados {
+  text-align: center;
+  padding: 20px;
+  color: #aaa;
+}
+
+.descricao {
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.chat {
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    padding: 5px;
+}

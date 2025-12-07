@@ -16,14 +16,17 @@ const LoginPage = () => {
                 nickname: username,
                 senha: password,
             });
-
-            let usuarioData = response.data.usuario;
+            const usuarioData = response.data.usuario;
+            const token = response.data.token;
             if (usuarioData.value) usuarioData = usuarioData.value; // se Optional, pega o valor real
 
             localStorage.setItem("token", response.data.token);
             localStorage.setItem("perfil", usuarioData.role);
 
-            login(usuarioData);
+            
+            login(usuarioData, response.data.token);
+            localStorage.setItem("user", JSON.stringify({ ...usuarioData, token }));
+            localStorage.setItem("perfil", usuarioData.role);
 
             console.log("Usuário logado:", usuarioData);
             console.log("Role:", usuarioData.role);

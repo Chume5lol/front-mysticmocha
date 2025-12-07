@@ -12,7 +12,11 @@ export default function TopNavbar() {
     logout();
     navigate("/login");
   }
-
+  if (!user) return (
+    <nav>
+      <span>Carregando...</span>
+    </nav>
+  );
 
   return (
     <nav className="top-navbar">
@@ -23,8 +27,8 @@ export default function TopNavbar() {
         {(user.role === "CLIENTE" ||
           user.role === "GESTOR" ||
           user.role === "ADMINISTRADOR") && (
-          <li onClick={handleLogout}>Logout</li>
-        )}
+            <li onClick={handleLogout}>Logout</li>
+          )}
       </ul>
     </nav>
   );

@@ -19,10 +19,12 @@ export default function Layout({ children }) {
 
         <main
           style={{
+            marginLeft: sidebarOpen ? "9vw" : "60px",
+            marginTop: "50px",
+            width: "88.5vw",
             flex: 1,
             padding: "20px",
             transition: "margin-left 0.3s ease",
-            marginLeft: sidebarOpen ? "20vw" : "60px",
             overflowY: "auto", // evita estourar tela
           }}
         >
