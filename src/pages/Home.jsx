@@ -1,16 +1,17 @@
 import { useAuth } from "../context/Context";
 import React, { useState } from 'react';
 import TopNavbar from '../components/TopNavbar';
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 import Layout from "../components/Layout";
 
 const Home = () => {
     const { user } = useAuth();
     const [sidebarOpen, setSidebarOpen] = useState(false);
+    const navigate = useNavigate();
 
     if (!user) {
-        return <Navigate to="/login" replace />;
+        return navigate("/login");;
     }
 
     return (

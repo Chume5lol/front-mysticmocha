@@ -14,14 +14,12 @@ export default function ChamadoModal({ chamado, isOpen, onClose, atualizarChamad
 
     useEffect(() => {
         if (!chamado || !user?.token) return;
-        console.log(user.token)
 
         axios.get(`http://localhost:8080/chamados/${chamado.id}/mensagens`, {
-                headers: {
+            headers: {
                 Authorization: `Bearer ${user.token}`
             }
         })
-
             .then(res => setMensagens(res.data))
             .catch(err => console.error(err));
     }, [chamado, user]);
@@ -29,14 +27,31 @@ export default function ChamadoModal({ chamado, isOpen, onClose, atualizarChamad
     useEffect(() => {
         if (!isOpen || !chamado || !user?.token) return;
 
+        const interval = setInterval(() => {
+            axios.get(`http://localhost:8080/chamados/${chamado.id}/mensagens`, {
+                headers: { Authorization: `Bearer ${user.token}` }
+            })
+                .then(res => setMensagens(res.data))
+                .catch(err => console.error(err));
+        }, 1500);
+
+        return () => clearInterval(interval);
+    }, [isOpen, chamado, user]);
+
+
+
+    useEffect(() => {
+        if (!isOpen || !chamado || !user?.token) return;
+
         axios.get(`http://localhost:8080/chamados/${chamado.id}/mensagens`, {
-                headers: {
+            headers: {
                 Authorization: `Bearer ${user.token}`
             }
         })
             .then(res => setMensagens(res.data))
             .catch(err => console.error(err));
     }, [isOpen, chamado, user]);
+
 
 
     const handleAtualizarStatus = async () => {
@@ -63,9 +78,18 @@ export default function ChamadoModal({ chamado, isOpen, onClose, atualizarChamad
             console.log(user.token)
             const response = await axios.post(
                 `http://localhost:8080/chamados/${chamado.id}/chat`,
-                { descricao: novaMensagem },
-                { headers: { Authorization: `Bearer ${user.token}` } } // envia token
+                {
+                    idChamado: chamado.id,
+                    remetenteId: user.id,
+                    descricao: novaMensagem
+                },
+                {
+                    headers: {
+                        Authorization: `Bearer ${user.token}`
+                    }
+                }
             );
+
             setMensagens(prev => [...prev, response.data]);
             setNovaMensagem("");
         } catch (err) {
@@ -101,12 +125,22 @@ export default function ChamadoModal({ chamado, isOpen, onClose, atualizarChamad
             <div className="chat-container">
                 <h3>Chat do Chamado</h3>
                 <div className="chat-mensagens">
-                    {mensagens.map((m, i) => (
-                        <div key={i} className="chat-mensagem">
-                            <b>{m.remetenteNome || m.usuario}:</b> {m.descricao}
-                        </div>
-                    ))}
+                    {mensagens.map((m, i) => {
+                        const remetenteId = m.remetente?.id || m.remetenteId || i; 
+                        const nomeRemetente = m.remetente?.nome || m.usuario || "Você";
+
+                        return (
+                            <div
+                                key={m.id || i} 
+                                className={`mensagem ${remetenteId === user.id ? "eu" : "outro"}`}
+                            >
+                                <b>{nomeRemetente}:</b> {m.descricao}
+                            </div>
+                        );
+                    })}
                 </div>
+
+
                 <div className="chat-input">
                     <input
                         type="text"

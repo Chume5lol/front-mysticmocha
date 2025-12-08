@@ -14,6 +14,12 @@ export default function Sidebar({ open, setOpen }) {
     function handleChamadoGerais() {
         navigate("/administrador/chamados")
     }
+    function handleMeusChamados(){
+        navigate("/home/meusChamados");
+    }
+    function handleUsuarios(){
+        navigate("/administrador/usuarios");
+    }
 
     return (
         <aside className={open ? "sidebar open" : "sidebar"} style={{
@@ -26,9 +32,12 @@ export default function Sidebar({ open, setOpen }) {
 
             <ul className="sidebar-menu">
                 <li onClick={handleCriarChamado}>Abrir chamado</li>
-                <li>Meus chamados</li>
+                <li onClick={handleMeusChamados}>Meus chamados</li>
                 {user.role === "ADMINISTRADOR" && (
                         <li onClick={handleChamadoGerais}>Chamados gerais</li>
+                    )}
+                {user.role === "ADMINISTRADOR" && (
+                        <li onClick={handleUsuarios}>Usuários</li>
                     )}
 
 

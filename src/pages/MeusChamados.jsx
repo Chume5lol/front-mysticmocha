@@ -1,8 +1,9 @@
 import { useEffect, useMemo, useState } from "react";
-import Layout from "../components/Layout"
+import Layout from "../components/Layout";
 import { useAuth } from '../context/Context';
-import "../components/MeusChamados.css"
+import "../components/MeusChamados.css";
 import axios from "axios";
+import ChamadoModal from "../components/ChamadoModal";
 
 export default function MeusChamados() {
     const [filtro, setFiltro] = useState("");
@@ -10,8 +11,9 @@ export default function MeusChamados() {
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const { user } = useAuth();
 
+    const [chamadoSelecionado, setChamadoSelecionado] = useState(null);
+
     useEffect(() => {
-        console.log(user)
         if (!user) return;
 
         axios.get(`http://localhost:8080/chamados/listar/${user.id}`, {
@@ -27,8 +29,6 @@ export default function MeusChamados() {
             });
     }, [user]);
 
-
-
     const dadosFiltrados = useMemo(() => {
         return chamados.filter((item) =>
             Object.values(item)
@@ -38,11 +38,10 @@ export default function MeusChamados() {
         );
     }, [filtro, chamados]);
 
-    return <>
-
+    return (
         <Layout>
-            <div style={{ marginTop: "10vh", width: "73vw", marginLeft: sidebarOpen ? "" : "160px", }}>
-                <h2 >Meus chamados</h2>
+            <div style={{ marginTop: "10vh", width: "73vw", marginLeft: sidebarOpen ? "" : "160px" }}>
+                <h2>Meus chamados</h2>
 
                 <div className="tabela-container">
                     <input
@@ -62,13 +61,16 @@ export default function MeusChamados() {
                                     <th>Título</th>
                                     <th>Descrição</th>
                                     <th>Status</th>
+                                    <th>Solicitante</th>
+                                    <th>Atendente</th>
+                                    <th>Ações</th>
                                 </tr>
                             </thead>
 
                             <tbody>
                                 {dadosFiltrados.length === 0 ? (
                                     <tr>
-                                        <td colSpan="5" className="tabela-sem-resultados">
+                                        <td colSpan="8" className="tabela-sem-resultados">
                                             Nenhum resultado encontrado
                                         </td>
                                     </tr>
@@ -78,17 +80,34 @@ export default function MeusChamados() {
                                             <td>{item.id}</td>
                                             <td>{item.categoria}</td>
                                             <td>{item.titulo}</td>
-                                            <td>{item.descricao}</td>
+                                            <td className="descricao">{item.descricao}</td>
                                             <td>{item.status}</td>
+                                            <td>{item.solicitante.nome + " " + item.solicitante.sobrenome}</td>
+                                            <td>{item.atendente?.nome || "-"}</td>
+                                            <td>
+                                                <button onClick={() => setChamadoSelecionado(item)}>Abrir</button>
+                                            </td>
                                         </tr>
                                     ))
                                 )}
                             </tbody>
                         </table>
+
+                        {chamadoSelecionado && (
+                            <ChamadoModal
+                                chamado={chamadoSelecionado}
+                                isOpen={!!chamadoSelecionado}
+                                onClose={() => setChamadoSelecionado(null)}
+                                atualizarChamados={(atualizado) => {
+                                    setChamados(prev =>
+                                        prev.map(c => c.id === atualizado.id ? atualizado : c)
+                                    );
+                                }}
+                            />
+                        )}
                     </div>
                 </div>
             </div>
         </Layout>
-    </>
-
+    );
 }

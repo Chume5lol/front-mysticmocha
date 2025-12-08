@@ -1,11 +1,12 @@
-import { Outlet, Navigate } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
+import { useAuth } from "../context/Context";
 
 export default function ProtectedLayout() {
-    const token = localStorage.getItem("token");
+    const { user } = useAuth();
 
-    if (!token) {
+    if (!user) {
         return <Navigate to="/login" replace />;
     }
 
-    return <Outlet />;
+    return <Outlet />; // <- importante! renderiza as rotas filhas aqui
 }

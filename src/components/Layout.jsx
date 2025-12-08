@@ -12,7 +12,7 @@ export default function Layout({ children }) {
       <div
         style={{
           display: "flex",
-          height: "calc(100vh - 60px)", // ocupa o espaço abaixo da navbar
+          height: "calc(100vh - 60px)", // ocupa o espaço abaixo da navbar, cuidado
         }}
       >
         <Sidebar open={sidebarOpen} setOpen={setSidebarOpen} />
@@ -25,7 +25,7 @@ export default function Layout({ children }) {
             flex: 1,
             padding: "20px",
             transition: "margin-left 0.3s ease",
-            overflowY: "auto", // evita estourar tela
+            overflowY: "hidden", 
           }}
         >
           {children}

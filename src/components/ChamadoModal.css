@@ -20,7 +20,7 @@
   width: 90%;
   max-width: 600px;
   outline: none;
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   max-height: 80vh;
   overflow-y: auto;
 }
@@ -29,19 +29,24 @@
   margin-top: 20px;
   border-top: 1px solid #555;
   padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px; 
 }
 
 .chat-mensagens {
   max-height: 200px;
   overflow-y: auto;
   margin-bottom: 10px;
+
+  display: flex;          
+  flex-direction: column;  
+  gap: 6px;                
+  padding: 8px 0;
 }
 
 .chat-mensagem {
-  margin-bottom: 5px;
-  background-color: #333;
-  padding: 5px 10px;
-  border-radius: 5px;
+  margin-bottom: 0; 
 }
 
 .chat-input {
@@ -63,4 +68,28 @@
   background-color: #007bff;
   color: white;
   cursor: pointer;
+}
+
+.mensagem {
+  padding: 8px;
+  border-radius: 8px;
+  max-width: 70%;
+  word-break: break-word;
+}
+
+.eu {
+  align-self: flex-end;
+  background: #007bff;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+}
+
+
+.outro {
+  align-self: flex-start;
+  background: #333;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 8px;
 }

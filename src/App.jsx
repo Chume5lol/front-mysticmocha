@@ -9,6 +9,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import MeusChamados from "./pages/MeusChamados"
 import ChamadosGerais from "./pages/ChamadosGerais";
+import Usuarios from "./pages/Usuarios";
 
 function App() {
   return (
@@ -28,8 +29,9 @@ function App() {
             <Route path="/home/prestador" element={<Home />} />
             <Route path="/home/cliente" element={<Home />} />
             <Route path="/home/criarChamado" element={<CriarChamado />} />
-            <Route path="/home/meusChamado" element={<MeusChamados />} />
+            <Route path="/home/meusChamados" element={<MeusChamados />} />
             <Route path="/administrador/chamados" element={<ChamadosGerais />} />
+            <Route path="/administrador/usuarios" element={<Usuarios />} />
           </Route>
 
           <Route path="*" element={<Navigate to="/login" replace />} />
