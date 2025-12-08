@@ -22,7 +22,6 @@ const LoginPage = () => {
 
             localStorage.setItem("token", response.data.token);
             localStorage.setItem("perfil", usuarioData.role);
-
             
             login(usuarioData, response.data.token);
             localStorage.setItem("user", JSON.stringify({ ...usuarioData, token }));

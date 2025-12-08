@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import Layout from "../components/Layout";
-import "../components/UsuariosModal.css";
 import axios from "axios";
 
 const API_URL = "http://localhost:8080"; 
@@ -192,7 +191,6 @@ export default function Usuarios() {
                             >
                                 <option value="CLIENTE">Cliente</option>
                                 <option value="ADMINISTRADOR">Administrador</option>
-                                <option value="GESTOR">Gestor</option>
                                 <option value="PRESTADOR">Prestador</option>
                             </select>
                             <div className="modal-buttons">

@@ -20,6 +20,9 @@ export default function Sidebar({ open, setOpen }) {
     function handleUsuarios(){
         navigate("/administrador/usuarios");
     }
+    function handleEstoque(){
+        navigate("/estoque");
+    }
 
     return (
         <aside className={open ? "sidebar open" : "sidebar"} style={{
@@ -38,6 +41,9 @@ export default function Sidebar({ open, setOpen }) {
                     )}
                 {user.role === "ADMINISTRADOR" && (
                         <li onClick={handleUsuarios}>Usuários</li>
+                    )}
+                {(user.role === "ADMINISTRADOR" || user.role === "PRESTADOR" && user.departamento === "TECNOLOGIA") && (
+                        <li onClick={handleEstoque}>Estoque</li>
                     )}
 
 

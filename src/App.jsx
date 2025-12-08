@@ -10,6 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 import MeusChamados from "./pages/MeusChamados"
 import ChamadosGerais from "./pages/ChamadosGerais";
 import Usuarios from "./pages/Usuarios";
+import Estoque from "./pages/Estoque";
 
 function App() {
   return (
@@ -32,6 +33,8 @@ function App() {
             <Route path="/home/meusChamados" element={<MeusChamados />} />
             <Route path="/administrador/chamados" element={<ChamadosGerais />} />
             <Route path="/administrador/usuarios" element={<Usuarios />} />
+            <Route path="/estoque" element={<Estoque />} />
+
           </Route>
 
           <Route path="*" element={<Navigate to="/login" replace />} />

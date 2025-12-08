@@ -43,7 +43,8 @@
   padding: 12px 20px;
   cursor: pointer;
   transition: background 0.2s;
-  white-space: nowrap;
+  white-space: wrap;
+  word-break: break-all;
 }
 
 .sidebar-menu li:hover {

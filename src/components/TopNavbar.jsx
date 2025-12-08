@@ -25,7 +25,7 @@ export default function TopNavbar() {
         <li>Alterar configuração</li>
 
         {(user.role === "CLIENTE" ||
-          user.role === "GESTOR" ||
+          user.role === "PRESTADOR" ||
           user.role === "ADMINISTRADOR") && (
             <li onClick={handleLogout}>Logout</li>
           )}
