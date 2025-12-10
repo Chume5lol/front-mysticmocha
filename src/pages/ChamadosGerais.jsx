@@ -17,10 +17,6 @@ export default function ChamadosGerais() {
 
 
 
-    if (!user) {
-        return <navigate to="/login" replace />;
-    }
-
     useEffect(() => {
         console.log(user)
         if (!user) return;

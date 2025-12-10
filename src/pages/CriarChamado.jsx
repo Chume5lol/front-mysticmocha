@@ -17,9 +17,6 @@ export default function CriarChamado() {
     const [desc, setDesc] = useState("");
     const [erro, setErro] = useState("");
 
-    if (!user) {
-        return <Navigate to="/login" replace />;
-    }
     const handleCriarChamado = async (e) => {
         e.preventDefault();
         console.log(user)
@@ -44,7 +41,7 @@ export default function CriarChamado() {
             setDesc("");
             setCat("");
             setTimeout(() => {
-                navigate("/home/meusChamado");
+                navigate("/home/criarChamado");
             }, 1500);
         }
         catch (err) {

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Layout from "../components/Layout";
 import axios from "axios";
+import "../components/Chamados.css"
 
 export default function Estoque() {
 
@@ -103,16 +104,17 @@ export default function Estoque() {
         <Layout>
             <h2>Estoque</h2>
 
-            <button onClick={abrirModalNovo}>Adicionar Produto</button>
+            <button onClick={abrirModalNovo} className="novo">Adicionar Produto</button>
 
-            <table>
+            <table >
                 <thead>
                     <tr>
-                        <th>Código</th>
                         <th>Nome</th>
                         <th>Descrição</th>
                         <th>Preço</th>
                         <th>Quantidade</th>
+                        <th>Código Produto</th>
+                        <th>Edição</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -122,6 +124,7 @@ export default function Estoque() {
                             <td>{p.descricao}</td>
                             <td>{p.preco}</td>
                             <td>{p.quantidade}</td>
+                            <td>{p.codigoProduto}</td>
                             <td>
                                 <button onClick={() => abrirModalEditar(p)}>Editar</button>
                             </td>

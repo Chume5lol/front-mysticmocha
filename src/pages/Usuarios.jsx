@@ -98,7 +98,7 @@ export default function Usuarios() {
     return (
         <Layout>
             <h2>Bem vindo à criação e alteração de usuários</h2>
-            <button onClick={abrirModalNovo}>Novo Usuário</button>
+            <button onClick={abrirModalNovo} className="novo">Novo Usuário</button>
 
             <table>
                 <thead>

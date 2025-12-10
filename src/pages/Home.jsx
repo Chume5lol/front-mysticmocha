@@ -10,9 +10,6 @@ const Home = () => {
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const navigate = useNavigate();
 
-    if (!user) {
-        return navigate("/login");;
-    }
 
     return (
         <>
